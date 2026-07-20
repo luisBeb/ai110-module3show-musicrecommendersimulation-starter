@@ -9,3 +9,11 @@ id,title,artist,genre,mood,energy,tempo_bpm,valence,danceability,acousticness
 8,Night Drive Loop,Neon Echo,synthwave,moody,0.75,110,0.49,0.73,0.22
 9,Focus Flow,LoRoom,lofi,focused,0.40,80,0.59,0.60,0.78
 10,Rooftop Lights,Indigo Parade,indie pop,happy,0.76,124,0.81,0.82,0.35
+11,Calle Caliente,Ritmo Nuevo,reggaeton,party,0.88,96,0.86,0.93,0.08
+12,Isla Bonita Nights,Sabor Urbano,salsa,happy,0.85,180,0.90,0.91,0.30
+13,Bass Overdrive,Kilowatt Kids,edm,party,0.95,128,0.72,0.90,0.03
+14,Iron Tempest,Graveshade,metal,intense,0.97,165,0.30,0.45,0.02
+15,Velvet Hours,Mia Cole,r&b,romantic,0.48,85,0.68,0.70,0.44
+16,Cold Streets,Young Static,trap,moody,0.70,140,0.40,0.85,0.06
+17,Amor de Verano,Dulce Marea,bachata,romantic,0.55,125,0.83,0.87,0.52
+18,Moonlight Study,Aria Ensemble,classical,calm,0.20,66,0.55,0.30,0.97

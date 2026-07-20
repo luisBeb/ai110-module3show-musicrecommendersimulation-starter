@@ -2,32 +2,31 @@
 
 ## Project Summary
 
-In this project you will build and explain a small music recommender system.
-
-Your goal is to:
-
-- Represent songs and a user "taste profile" as data
-- Design a scoring rule that turns that data into recommendations
-- Evaluate what your system gets right and wrong
-- Reflect on how this mirrors real world AI recommenders
-
-Replace this paragraph with your own summary of what your version does.
+My version is a small content-based music recommender written in Python. It loads a
+catalog of songs from a CSV file, compares each song's attributes (genre, mood, and
+energy) against a user's taste profile, and gives each song a weighted score. It then
+ranks all the songs by score and prints the top recommendations in the terminal,
+along with the reasons each song earned points.
 
 ---
 
 ## How The System Works
 
-Explain your design in plain language.
+Real-world platforms like Spotify predict what users will love using two main
+approaches: collaborative filtering (recommending songs based on the behavior of
+users with similar taste) and content-based filtering (recommending songs whose
+attributes match the user's taste profile). Big platforms blend both, using data
+like likes, skips, playlists, tempo, and mood. My version is a simplified
+content-based recommender, since it only uses song attributes and not other users'
+behavior.
 
-Some prompts to answer:
-
-- What features does each `Song` use in your system
-  - For example: genre, mood, energy, tempo
-- What information does your `UserProfile` store
-- How does your `Recommender` compute a score for each song
-- How do you choose which songs to recommend
-
-You can include a simple diagram or bullet list if helpful.
+- **Song features used:** genre, mood, energy
+- **UserProfile stores:** favorite_genre, favorite_mood, target_energy
+- **Scoring:** a song earns +2.0 points for matching the favorite genre, +1.0 for
+  matching the favorite mood, and similarity points based on how close its energy
+  is to the user's target energy (closer = more points).
+- **Choosing recommendations:** every song in the catalog gets scored, the list is
+  sorted from highest to lowest, and the top k songs are recommended.
 
 ---
 
@@ -37,21 +36,22 @@ You can include a simple diagram or bullet list if helpful.
 
 1. Create a virtual environment (optional but recommended):
 
-   ```bash
+```bash
    python -m venv .venv
    source .venv/bin/activate      # Mac or Linux
    .venv\Scripts\activate         # Windows
+```
 
-2. Install dependencies
+2. Install dependencies:
 
 ```bash
-pip install -r requirements.txt
+   pip install -r requirements.txt
 ```
 
 3. Run the app:
 
 ```bash
-python -m src.main
+   python -m src.main
 ```
 
 ### Running Tests
@@ -68,18 +68,28 @@ You can add more tests in `tests/test_recommender.py`.
 
 ## Sample Recommendation Output
 
-Paste a sample of your recommender's output here as a text block so a reader can see what it produces:
-
 ```
-# e.g.:
-# User profile: genre=indie, mood=chill, energy=low
-# Recommendations:
-#   1. ...
-#   2. ...
-#   3. ...
-```
+Loaded songs: 18
 
-**Screenshot or video** *(optional)*: <!-- Insert a screenshot or demo video link here -->
+User profile: genre=pop, mood=happy, energy=0.8
+
+Top recommendations:
+
+  1. Sunrise City — Neon Echo  (Score: 3.98)
+     Because: genre match (+2.0), mood match (+1.0), energy similarity (+0.98)
+
+  2. Gym Hero — Max Pulse  (Score: 2.87)
+     Because: genre match (+2.0), energy similarity (+0.87)
+
+  3. Rooftop Lights — Indigo Parade  (Score: 1.96)
+     Because: mood match (+1.0), energy similarity (+0.96)
+
+  4. Isla Bonita Nights — Sabor Urbano  (Score: 1.95)
+     Because: mood match (+1.0), energy similarity (+0.95)
+
+  5. Night Drive Loop — Neon Echo  (Score: 0.95)
+     Because: energy similarity (+0.95)
+```
 
 ---
 
