@@ -133,4 +133,11 @@ Read and complete `model_card.md`:
 
 [**Model Card**](model_card.md)
 
-(1–2 paragraphs to be written in Phase 5)
+This project taught me that recommenders turn data into predictions through
+surprisingly simple math — my whole system is three scoring rules and a sort, yet
+it produces rankings that feel intentional. It also showed me where unfairness
+comes from: not necessarily the scoring logic, but the dataset itself. My rock
+user got weak recommendations because the catalog had one rock song, and my
+"crowd-pleaser" track reached everyone's list by partially matching everything.
+In real systems at Spotify's scale, those same patterns become filter bubbles and
+underserved audiences. Full details in the model card above.
