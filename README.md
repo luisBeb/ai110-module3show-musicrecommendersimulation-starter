@@ -95,25 +95,35 @@ Top recommendations:
 
 ## Experiments You Tried
 
-Use this section to document the experiments you ran. For example:
-
-- What happened when you changed the weight on genre from 2.0 to 0.5
-- What happened when you added tempo or valence to the score
-- How did your system behave for different types of users
+**Weight Shift experiment:** I halved the genre weight (2.0 → 1.0) and doubled the
+energy weight (max 1.0 → max 2.0), keeping the maximum score at 4.0 so results
+stayed comparable. The top recommendation for each profile barely changed, but the
+score gaps compressed a lot: for the High-Energy Pop user, Sunrise City's lead over
+non-pop songs shrank from ~2 points to ~1, and Gym Hero (pop) dropped from 2nd to
+4th, overtaken by an indie pop and a salsa song with similar energy. Songs with
+perfect energy matches (like Bass Overdrive at +2.00) still couldn't reach the top
+without genre or mood matches. My conclusion: the change made recommendations
+"just different," not more accurate — genre loyalty got diluted and the system
+became less confident about what the user actually likes. I reverted to the
+original weights afterward.
 
 ---
 
 ## Limitations and Risks
 
-Summarize some limitations of your recommender.
-
-Examples:
-
-- It only works on a tiny catalog
-- It does not understand lyrics or language
-- It might over favor one genre or mood
-
-You will go deeper on this in your model card.
+- **Tiny catalog:** with only 18 songs, one genre match can dominate an entire
+  ranking.
+- **Genre representation bias:** the "Deep Intense Rock" user only had ONE song
+  score above 2.0 (Storm Runner, the only rock track). After that there is a huge
+  cliff — the catalog underserves this user, and the system can't say "I don't
+  have good options for you."
+- **Crowd-pleaser bias:** Gym Hero appears in the top 5 for both the Pop and the
+  Rock user because it is pop AND intense AND high-energy — songs that partially
+  match everything float to the top of many lists.
+- **Exact string matching:** "indie pop" never matches "pop," so related genres
+  earn zero genre points. Real systems use similarity, not equality.
+- **No lyrics, language, or context:** the system knows nothing about what songs
+  mean or when the user is listening.
 
 ---
 
@@ -123,10 +133,4 @@ Read and complete `model_card.md`:
 
 [**Model Card**](model_card.md)
 
-Write 1 to 2 paragraphs here about what you learned:
-
-- about how recommenders turn data into predictions
-- about where bias or unfairness could show up in systems like this
-
-
-
+(1–2 paragraphs to be written in Phase 5)
